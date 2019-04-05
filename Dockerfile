@@ -2,10 +2,10 @@ FROM ubuntu:bionic
 
 RUN apt-get update
 RUN apt-get install software-properties-common -y
+RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 7FCC7D46ACCC4CF8
 RUN add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main"
 RUN apt-get install wget -y
 RUN wget -q -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 7FCC7D46ACCC4CF8
 RUN apt-get update
 RUN apt-get install postgresql-9.6 -y
 RUN mkdir /pgutils
